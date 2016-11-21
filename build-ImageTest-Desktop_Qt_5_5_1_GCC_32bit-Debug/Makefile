@@ -187,7 +187,8 @@ DIST          = /home/danielyuan/Qt5.5.1/5.5/gcc/mkspecs/features/spec_pre.prf \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/mkspecs/features/exceptions.prf \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/mkspecs/features/yacc.prf \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/mkspecs/features/lex.prf \
-		../ImageTest/ImageTest.pro ../ImageTest/mainwindow.h ../ImageTest/main.cpp \
+		../ImageTest/ImageTest.pro ../ImageTest/mainwindow.h \
+		../ImageTest/convert.h ../ImageTest/main.cpp \
 		../ImageTest/mainwindow.cpp
 QMAKE_TARGET  = ImageTest
 DESTDIR       = #avoid trailing-slash linebreak
@@ -510,7 +511,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../ImageTest/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../ImageTest/mainwindow.h ../ImageTest/convert.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../ImageTest/main.cpp ../ImageTest/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../ImageTest/mainwindow.ui $(DISTDIR)/
 
@@ -643,6 +644,32 @@ moc_mainwindow.cpp: /home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QMainWind
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qtouchdevice.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qtabwidget.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qicon.h \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/hal/defs.h \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/hal.hpp \
+		/usr/local/include/opencv2/core/sse_utils.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		../ImageTest/mainwindow.h
 	/home/danielyuan/Qt5.5.1/5.5/gcc/bin/moc $(DEFINES) -I/home/danielyuan/Qt5.5.1/5.5/gcc/mkspecs/linux-g++-32 -I/home/danielyuan/workspace/Qt/Machine_vision/ImageUnderstanding/ImageTest -I/usr/local/include -I/usr/local/include/opencv -I/usr/local/include/opencv2 -I/home/danielyuan/Qt5.5.1/5.5/gcc/include -I/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets -I/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui -I/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore -I. ../ImageTest/mainwindow.h -o moc_mainwindow.cpp
 
@@ -770,6 +797,32 @@ main.o: ../ImageTest/main.cpp ../ImageTest/mainwindow.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qtouchdevice.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qtabwidget.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qicon.h \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/hal/defs.h \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/hal.hpp \
+		/usr/local/include/opencv2/core/sse_utils.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QApplication \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qapplication.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/qcoreapplication.h \
@@ -885,6 +938,32 @@ mainwindow.o: ../ImageTest/mainwindow.cpp ../ImageTest/mainwindow.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qtouchdevice.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qtabwidget.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qicon.h \
+		/usr/local/include/opencv2/imgproc/imgproc.hpp \
+		/usr/local/include/opencv2/imgproc.hpp \
+		/usr/local/include/opencv2/core.hpp \
+		/usr/local/include/opencv2/core/cvdef.h \
+		/usr/local/include/opencv2/hal/defs.h \
+		/usr/local/include/opencv2/core/version.hpp \
+		/usr/local/include/opencv2/core/base.hpp \
+		/usr/local/include/opencv2/core/cvstd.hpp \
+		/usr/local/include/opencv2/core/ptr.inl.hpp \
+		/usr/local/include/opencv2/hal.hpp \
+		/usr/local/include/opencv2/core/sse_utils.hpp \
+		/usr/local/include/opencv2/core/traits.hpp \
+		/usr/local/include/opencv2/core/matx.hpp \
+		/usr/local/include/opencv2/core/types.hpp \
+		/usr/local/include/opencv2/core/mat.hpp \
+		/usr/local/include/opencv2/core/bufferpool.hpp \
+		/usr/local/include/opencv2/core/mat.inl.hpp \
+		/usr/local/include/opencv2/core/persistence.hpp \
+		/usr/local/include/opencv2/core/operations.hpp \
+		/usr/local/include/opencv2/core/cvstd.inl.hpp \
+		/usr/local/include/opencv2/core/utility.hpp \
+		/usr/local/include/opencv2/core/core_c.h \
+		/usr/local/include/opencv2/core/types_c.h \
+		/usr/local/include/opencv2/core/optim.hpp \
+		/usr/local/include/opencv2/imgproc/imgproc_c.h \
+		/usr/local/include/opencv2/imgproc/types_c.h \
 		ui_mainwindow.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/QVariant \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QAction \
@@ -899,6 +978,12 @@ mainwindow.o: ../ImageTest/mainwindow.cpp ../ImageTest/mainwindow.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/qinputmethod.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QButtonGroup \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qbuttongroup.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QGridLayout \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qgridlayout.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qlayout.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qlayoutitem.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qboxlayout.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QHBoxLayout \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QHeaderView \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qheaderview.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qabstractitemview.h \
@@ -916,14 +1001,80 @@ mainwindow.o: ../ImageTest/mainwindow.cpp ../ImageTest/mainwindow.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qstyle.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qtabbar.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qrubberband.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QLabel \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qlabel.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QMenuBar \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qmenubar.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qmenu.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QPushButton \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qpushbutton.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qabstractbutton.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QScrollArea \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qscrollarea.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QSlider \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QStatusBar \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qstatusbar.h \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QToolBar \
 		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qtoolbar.h \
-		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QWidget
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/QWidget \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qfiledialog.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/qdir.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/qfileinfo.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtWidgets/qdialog.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/qtimer.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/qbasictimer.h \
+		../ImageTest/convert.h \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtCore/QDebug \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/QImage \
+		/home/danielyuan/Qt5.5.1/5.5/gcc/include/QtGui/QPixmap \
+		/usr/local/include/opencv2/core/core.hpp \
+		/usr/local/include/opencv2/video/tracking.hpp \
+		/usr/local/include/opencv2/features2d/features2d.hpp \
+		/usr/local/include/opencv2/features2d.hpp \
+		/usr/local/include/opencv2/flann/miniflann.hpp \
+		/usr/local/include/opencv2/flann/defines.h \
+		/usr/local/include/opencv2/flann/config.h \
+		/usr/local/include/opencv2/flann/flann.hpp \
+		/usr/local/include/opencv2/flann.hpp \
+		/usr/local/include/opencv2/flann/flann_base.hpp \
+		/usr/local/include/opencv2/flann/general.h \
+		/usr/local/include/opencv2/flann/matrix.h \
+		/usr/local/include/opencv2/flann/params.h \
+		/usr/local/include/opencv2/flann/any.h \
+		/usr/local/include/opencv2/flann/saving.h \
+		/usr/local/include/opencv2/flann/nn_index.h \
+		/usr/local/include/opencv2/flann/result_set.h \
+		/usr/local/include/opencv2/flann/all_indices.h \
+		/usr/local/include/opencv2/flann/kdtree_index.h \
+		/usr/local/include/opencv2/flann/dynamic_bitset.h \
+		/usr/local/include/opencv2/flann/dist.h \
+		/usr/local/include/opencv2/flann/heap.h \
+		/usr/local/include/opencv2/flann/allocator.h \
+		/usr/local/include/opencv2/flann/random.h \
+		/usr/local/include/opencv2/flann/kdtree_single_index.h \
+		/usr/local/include/opencv2/flann/kmeans_index.h \
+		/usr/local/include/opencv2/flann/logger.h \
+		/usr/local/include/opencv2/flann/composite_index.h \
+		/usr/local/include/opencv2/flann/linear_index.h \
+		/usr/local/include/opencv2/flann/hierarchical_clustering_index.h \
+		/usr/local/include/opencv2/flann/lsh_index.h \
+		/usr/local/include/opencv2/flann/lsh_table.h \
+		/usr/local/include/opencv2/flann/autotuned_index.h \
+		/usr/local/include/opencv2/flann/ground_truth.h \
+		/usr/local/include/opencv2/flann/index_testing.h \
+		/usr/local/include/opencv2/flann/timer.h \
+		/usr/local/include/opencv2/flann/sampling.h \
+		/usr/local/include/opencv2/calib3d/calib3d.hpp \
+		/usr/local/include/opencv2/calib3d.hpp \
+		/usr/local/include/opencv2/core/affine.hpp \
+		/usr/local/include/opencv2/calib3d/calib3d_c.h \
+		/usr/local/include/opencv2/highgui/highgui.hpp \
+		/usr/local/include/opencv2/highgui.hpp \
+		/usr/local/include/opencv2/imgcodecs.hpp \
+		/usr/local/include/opencv2/videoio.hpp \
+		/usr/local/include/opencv2/highgui/highgui_c.h \
+		/usr/local/include/opencv2/imgcodecs/imgcodecs_c.h \
+		/usr/local/include/opencv2/videoio/videoio_c.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../ImageTest/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -5,6 +5,7 @@
 #include "qfiledialog.h"
 #include "qpixmap.h"
 #include "qtimer.h"
+#include "convert.h"
 
 //opencv headers
 #include "opencv2/core/core_c.h"
@@ -22,6 +23,7 @@
 #include <opencv2/highgui/highgui.hpp>
 
 using namespace std;
+using namespace ASM;
 //using namespace cv;
 //Mat image;
 
@@ -70,6 +72,7 @@ void MainWindow::on_pushButton_clicked()
     qDebug()<<"filenames:"<<fileName<<endl;
     if(fileName == NULL)
         return;
+#if 0
     //using opecv api
     //image = cv::imread(fileName.toAscii().data());
     image = cv::imread(fileName.toLatin1().constData());
@@ -78,6 +81,13 @@ void MainWindow::on_pushButton_clicked()
     // cv::imshow((fileName.toAscii().data(), image);
     cv::imshow(fileName.toLatin1().constData(), image);
 
+    //testing convert
+    //QPixmap pixmap = cvMatToQPixmap(image);
+    //ui->label->setPixmap(pixmap);
+    //ui->label->show();
+#endif
+
+#if 1
     //using Qt api
     //ui->graphicsView->show();
     QPixmap pixmap(fileName);
@@ -85,4 +95,11 @@ void MainWindow::on_pushButton_clicked()
     //ui->label->resize(QSize(pixmap.width(),pixmap.height()));
     //ui->scrollArea->setWidget(ui->label);//scrollImag->setWidget(label);
     ui->label->show();
+
+    //testing convert
+   image = QPixmapToCvMat(pixmap,false);
+   cv::namedWindow(fileName.toLatin1().constData(),CV_WINDOW_AUTOSIZE);
+   // cv::imshow((fileName.toAscii().data(), image);
+   cv::imshow(fileName.toLatin1().constData(), image);
+#endif
 }
