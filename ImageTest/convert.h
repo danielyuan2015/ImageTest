@@ -117,7 +117,8 @@ namespace ASM {
               if ( inImage.format() == QImage::Format_RGB32 )
                  swapped = inImage.convertToFormat( QImage::Format_RGB888 );
 
-               swapped = inImage.rgbSwapped();
+               //swapped = inImage.rgbSwapped(); //not correct here
+              swapped = swapped.rgbSwapped();
 
               return cv::Mat( swapped.height(), swapped.width(),
                               CV_8UC3,

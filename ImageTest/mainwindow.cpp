@@ -97,9 +97,8 @@ void MainWindow::on_pushButton_clicked()
     ui->label->show();
 
     //testing convert
-   image = QPixmapToCvMat(pixmap,false);
+   image = QPixmapToCvMat(pixmap,true);
    cv::namedWindow(fileName.toLatin1().constData(),CV_WINDOW_AUTOSIZE);
-   // cv::imshow((fileName.toAscii().data(), image);
    cv::imshow(fileName.toLatin1().constData(), image);
 #endif
 }
