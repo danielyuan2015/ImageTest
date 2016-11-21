@@ -4,6 +4,7 @@
 #include "qstring.h"
 #include "qfiledialog.h"
 #include "qpixmap.h"
+#include "qtimer.h"
 
 //opencv headers
 #include "opencv2/core/core_c.h"
@@ -29,12 +30,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //using this 100ms timer to update slider value
+    timer = new QTimer();
+
     ui->scrollArea->setWidget(ui->label);
+    ui->horizontalSlider->setRange(0,255);
+    ui->horizontalSlider_2->setRange(0,255);
+    ui->horizontalSlider_3->setRange(0,255);
+
+    timer->setInterval(200);
+    connect(timer, SIGNAL(timeout()), this, SLOT(update_slider_value()));
+    timer->start();
 }
 
 MainWindow::~MainWindow()
 {
+    timer->stop();
+    delete timer;
     delete ui;
+}
+
+void MainWindow::update_slider_value()
+{
+    hVal = ui->horizontalSlider->value();
+    sVal = ui->horizontalSlider_2->value();
+    vVal = ui->horizontalSlider_3->value();
+    ui->label_hVal->setNum(hVal);
+    ui->label_sVal->setNum(sVal);
+    ui->label_vVal->setNum(vVal);
+   // qDebug()<<"hVal:"<<hVal<<endl;
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -42,7 +67,7 @@ void MainWindow::on_pushButton_clicked()
     qDebug()<<"Open button clicked!"<<endl;
     QString fileName = QFileDialog::getOpenFileName(this,tr("Open Image"),
                             ".",tr("Image Files (*.png *.jpg *.bmp)"));
-    qDebug()<<"filenames:"<<fileName;
+    qDebug()<<"filenames:"<<fileName<<endl;
     if(fileName == NULL)
         return;
     //using opecv api

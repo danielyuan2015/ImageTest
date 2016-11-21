@@ -19,10 +19,15 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void update_slider_value();
 
 private:
     Ui::MainWindow *ui;
+    QTimer *timer;
     cv::Mat image;
+    int hVal;
+    int sVal;
+    int vVal;
 };
 
 #endif // MAINWINDOW_H
